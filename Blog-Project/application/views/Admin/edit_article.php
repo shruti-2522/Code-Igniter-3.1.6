@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -16,28 +17,20 @@
 <?php include 'header.php';?>
 
 <div class="container " style="margin-top:20px;">
-  <h2>ADMIN FORM</h2>
+  <h2>EDIT ARTICLES</h2>
 
-  <?php if($error=$this->session->flashdata('Login_Failed')):?>
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="alert alert-danger">
-        <?= $error; ?>
-      </div>
-    </div>
-
-   </div>
- <?php endif;?>
-
-<?php echo form_open("Admin/index")?>
+ 
+<?php echo form_open("Admin/updatearticle/{$article->id} "); ?>
+<!-- <?php echo form_hidden('articleid',$article->id);?> -->
+ 
 <div class="row">
   <div class="col-lg-6">
   <div class="form-group">
-  <label>Username</label>
- <?php echo form_input(['class'=>'form-control','placeholder'=>'Enter Username','name'=>'uname','value'=>set_value('uname')]) ?>
+  <label>Article Title:</label>
+ <?php echo form_input(['class'=>'form-control','placeholder'=>'Enter Article Title','name'=>'title','value'=>set_value('title',$article->title)]) ?>
 </div></div>
 <div class="col-lg-6"  style="margin-top:35px;">
-  <?php echo form_error('uname');?>
+  <?php echo form_error('title');?>
   </div>
 
 </div>
@@ -45,13 +38,13 @@
 <div class="row">
   <div class="col-lg-6">
 <div class="form-group">
-  <label>Enter Password</label>
- <?php echo form_password(['class'=>'form-control','type'=>'password','placeholder'=>"Enter Password",'name'=>'password','value'=>set_value('password')]) ?>
+  <label>Article Body</label>
+ <?php echo form_textarea(['class'=>'form-control','type'=>'textarea','placeholder'=>"Enter Article Body",'name'=>'body','value'=>set_value('body',$article->body)]) ?>
 </div>
 </div>
 
 <div class="col-lg-6"  style="margin-top:35px;">
-  <?php echo form_error('password');?>
+  <?php echo form_error('body');?>
   </div>
 </div>
 
